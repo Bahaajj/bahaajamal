@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج التواصل</title>
+</head>
+<body>
+    <h1>نموذج التواصل</h1>
+    <form id="contactForm">
+        <label for="name">الاسم:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="message">الرسالة:</label>
+        <textarea id="message" name="message" required></textarea><br><br>
+
+        <button type="submit">إرسال</button>
+    </form>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var name = encodeURIComponent(document.getElementById('name').value);
+            var message = encodeURIComponent(document.getElementById('message').value);
+            var whatsappNumber = '96181561411'; // استبدل بهذا رقم واتسابك
+            var whatsappUrl = `https://wa.me/${whatsappNumber}?text=اسم%3A%20${name}%0Aرسالة%3A%20${message}`;
+            window.location.href = whatsappUrl;
+        });
+    </script>
+</body>
+</html>
